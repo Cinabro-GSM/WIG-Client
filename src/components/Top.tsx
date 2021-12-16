@@ -31,6 +31,7 @@ const Menu = styled.div`
   height: 20x;
   text-align: center;
   font-size: 14px;
+  cursor: pointer;
 `;
 
 export default function Top() {
