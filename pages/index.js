@@ -1,15 +1,14 @@
-import type { NextPage } from 'next'
 import styled from "styled-components";
-import MouList from '../src/components/MouList';
-import OpinionList from '../src/components/OpinionList';
+import MouList from "../src/components/MouList";
+import OpinionList from "../src/components/OpinionList";
 
 const Main = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100vh;
-  background-color: #C4C4C4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #c4c4c4;
 `;
 
 const Mou = styled.div`
@@ -18,7 +17,7 @@ const Mou = styled.div`
   align-items: center;
   width: 100%;
   height: 60vh;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 `;
 
 const Opinion = styled.div`
@@ -27,10 +26,10 @@ const Opinion = styled.div`
   align-items: center;
   width: 100%;
   height: 80vh;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 `;
 
-const Home: NextPage = () => {
+const Home = () => {
   return (
     <>
       <Main>styled components 적용완료</Main>
@@ -38,10 +37,10 @@ const Home: NextPage = () => {
         <MouList />
       </Mou>
       <Opinion>
-        <OpinionList/>
+        <OpinionList />
       </Opinion>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
