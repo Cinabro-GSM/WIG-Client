@@ -1,11 +1,20 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const MouWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60vh;
+  height: 100vh;
+  margin-top: 15vh;
+  margin-bottom: 10vh;
+  img {
+    max-width: 6%;
+    width: inherit;
+    height: auto;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -35,41 +44,134 @@ const Text2 = styled.div`
 `;
 
 const ListWrapper = styled.div`
-    width: 60%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-`;
-
-const Lists = styled.div`
+  width: 80%;
+  height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const Lists = styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
   width: 90%;
-  height: 80%;
-  background: #FDFDFD;
+  background: #fdfdfd;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
   border-radius: 70px;
+  background-color: blue;
+  /* overflow: hidden; */
+`;
+
+const Mous = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  column-gap: 2vh;
 `;
 
 export const MouList = () => {
+  const [lists, setLists] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchLists = async () => {
+    try {
+      setError(null);
+      setLists(null);
+      setLoading(true);
+      const response = await axios.get(
+        "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/company.json"
+      );
+      console.log(response.data);
+      setLists(response.data);
+    } catch (e) {
+      setError(e);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchLists();
+  }, []);
+
   return (
     <>
-      <MouWrapper>
-        <TextWrapper>
+      {!loading && (
+        <MouWrapper>
+          <TextWrapper>
             <Text1>저희는 이 회사들과 함께해요!</Text1>
             <Text2>저희 GSM과 MOU를 맺은 회사입니다!</Text2>
-        </TextWrapper>
-        <ListWrapper>
-          <Lists>
-            
-          </Lists>
-        </ListWrapper>
-      </MouWrapper>
+          </TextWrapper>
+          <ListWrapper>
+            <Lists>
+              <Mous>
+                {lists &&
+                  lists.slice(0, 15).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(15, 30).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(30, 45).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(45, 60).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(60, 75).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(75, 90).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(90, 105).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(105, 120).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(120, 135).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+              <Mous>
+                {lists &&
+                  lists.slice(135, 150).map((list) => {
+                    return <img src={list.logo} />;
+                  })}
+              </Mous>
+            </Lists>
+          </ListWrapper>
+        </MouWrapper>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default MouList
+export default MouList;
