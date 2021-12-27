@@ -59,8 +59,7 @@ const Lists = styled.div`
   background: #fdfdfd;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
   border-radius: 70px;
-  background-color: blue;
-  /* overflow: hidden; */
+  overflow: hidden;
 `;
 
 const Mous = styled.div`
@@ -69,6 +68,16 @@ const Mous = styled.div`
   align-items: center;
   width: 100%;
   column-gap: 2vh;
+  background-repeat: repeat;
+  @keyframes animation {
+    from {
+      transform: translateX(0px);
+    }
+    to {
+      transform: translateX(-1400px);
+    }
+  }
+  /* animation: animation 5s linear infinite forwards; */
 `;
 
 export const MouList = () => {
