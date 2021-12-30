@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const Main = styled.div`
   margin: 0 auto;
@@ -31,7 +33,7 @@ const Info = styled.div`
 `;
 
 const InfoHead = styled.div`
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 700;
 `;
 
@@ -159,9 +161,47 @@ const ClubName = styled.div`
 
 const ClubDesc = styled.div`
   margin: 1vh 4vh 0 3vh;
+  background-color: black;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
 `;
 
 const Club = () => {
+  const [clubs, setClub] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchClubs = async () => {
+    try {
+      setError(null);
+      setClub(null);
+      setLoading(true);
+      const response = await axios.get(
+        "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/MajorClub.json"
+      );
+      console.log(response.data);
+      setClub(response.data);
+    } catch (e) {
+      setError(e);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchClubs();
+  }, []);
+
+  const ClubList = clubs?.map((item) => (
+    <Clubs>
+      <ClubIntro>
+        <ClubName>{item.name}</ClubName>
+        <ClubName>{item.major}</ClubName>
+      </ClubIntro>
+      <ClubDesc>{item.description}</ClubDesc>
+    </Clubs>
+  ));
+
   return (
     <>
       <Main>
@@ -173,16 +213,15 @@ const Club = () => {
               <InfoCounts>
                 전공동아리
                 <br />
-                30개
+                {clubs && clubs.length}개
               </InfoCounts>
               <InfoCounts>
                 자율동아리
                 <br />
-                20개
               </InfoCounts>
             </InfoCount>
             <SearchWrapper>
-              <input type="text" placeholder="검색" />
+              <input type="text" placeholder=" 검색" />
             </SearchWrapper>
           </Info>
         </InfoWrapper>
@@ -192,80 +231,14 @@ const Club = () => {
               전공동아리
               <Line />
             </ClubHead>
-            <ClubsVowel>
-              <Clubs>
-                <ClubIntro>
-                  <ClubName>피크닉</ClubName>
-                  <ClubName>iOS</ClubName>
-                </ClubIntro>
-                <ClubDesc>
-                  Goout 이라는 통해서 외출 조퇴 관리 앱을 피크닉 동아리입니다.
-                </ClubDesc>
-              </Clubs>
-              <Clubs>
-                <ClubIntro>
-                  <ClubName>잡탕</ClubName>
-                  <ClubName>Android</ClubName>
-                </ClubIntro>
-                <ClubDesc>
-                  Goout 이라는 통해서 외출 조퇴 관리 앱을 피크닉 동아리입니다.
-                </ClubDesc>
-              </Clubs>
-              <Clubs>
-                <ClubIntro>
-                  <ClubName>피크닉</ClubName>
-                  <ClubName>iOS</ClubName>
-                </ClubIntro>
-                <ClubDesc>
-                  Goout 이라는 통해서 외출 조퇴 관리 앱을 피크닉 동아리입니다.
-                </ClubDesc>
-              </Clubs>
-              <Clubs>
-                <ClubIntro>
-                  <ClubName>피크닉</ClubName>
-                  <ClubName>iOS</ClubName>
-                </ClubIntro>
-                <ClubDesc>
-                  Goout 이라는 통해서 외출 조퇴 관리 앱을 피크닉 동아리입니다.
-                </ClubDesc>
-              </Clubs>
-            </ClubsVowel>
+            <ClubsVowel>{ClubList}</ClubsVowel>
           </MajorClubs>
           <FreeClubs>
             <ClubHead>
               자율동아리
               <Line />
             </ClubHead>
-            <ClubsVowel>
-              <Clubs>
-                <ClubIntro>
-                  <ClubName>Riot</ClubName>
-                  <ClubName>IoT</ClubName>
-                </ClubIntro>
-                <ClubDesc>IoT와 웹을 조합한 IoT동아리 입니다.</ClubDesc>
-              </Clubs>
-              <Clubs>
-                <ClubIntro>
-                  <ClubName>Riot</ClubName>
-                  <ClubName>IoT</ClubName>
-                </ClubIntro>
-                <ClubDesc>IoT와 웹을 조합한 IoT동아리 입니다.</ClubDesc>
-              </Clubs>
-              <Clubs>
-                <ClubIntro>
-                  <ClubName>Riot</ClubName>
-                  <ClubName>IoT</ClubName>
-                </ClubIntro>
-                <ClubDesc>IoT와 웹을 조합한 IoT동아리 입니다.</ClubDesc>
-              </Clubs>
-              <Clubs>
-                <ClubIntro>
-                  <ClubName>Riot</ClubName>
-                  <ClubName>IoT</ClubName>
-                </ClubIntro>
-                <ClubDesc>IoT와 웹을 조합한 IoT동아리 입니다.</ClubDesc>
-              </Clubs>
-            </ClubsVowel>
+            <ClubsVowel></ClubsVowel>
           </FreeClubs>
         </ClubWrapper>
       </Main>
