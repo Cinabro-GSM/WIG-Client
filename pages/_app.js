@@ -1,9 +1,7 @@
 import Footer from "../src/components/Footer";
 import Top from "../src/components/Top";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import type { AppProps } from 'next/app'
-import { NextPage } from 'next';
-import theme from '../utils/theme';
+import theme from "../utils/theme";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -12,10 +10,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
-`
-
-
-const MyApp: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => {
+`;
+function MyApp({ Component, pageProps }) {
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -25,7 +21,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => {
         <Footer />
       </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
