@@ -25,11 +25,11 @@ const Info = styled.div`
   align-items: center;
   margin: 0 0 15vh 15vh;
   width: 40vh;
-  height: 60%;
+  height: 55%;
   background: #ffffff;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  grid-template-rows: 150px 100px 200px 150px;
+  grid-template-rows: 150px 100px 450px;
 `;
 
 const InfoHead = styled.div`
@@ -237,9 +237,6 @@ const Club = () => {
                 {frees && frees.length}개
               </InfoCounts>
             </InfoCount>
-            <SearchWrapper>
-              <input type="text" placeholder=" 검색" />
-            </SearchWrapper>
           </Info>
         </InfoWrapper>
         <ClubWrapper>

@@ -6,9 +6,9 @@ const Main = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   .card {
     position: relative;
     width: 270px;
@@ -52,6 +52,7 @@ const InfoWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: 6.5vh;
 `;
 
 const Info = styled.div`
@@ -59,7 +60,7 @@ const Info = styled.div`
   justify-content: center;
   align-items: center;
   width: 60vh;
-  height: 85%;
+  height: 90vh;
   background: #ffffff;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -142,7 +143,6 @@ const ProjectContainer = styled.div`
   height: 90%;
   grid-template-columns: repeat(3, 35%);
   row-gap: 5vh;
-  overflow-x: hidden;
 `;
 
 const Projects = styled.div`
