@@ -176,19 +176,19 @@ const Arrow2 = styled.img`
 `;
 
 const Major = () => {
-  const [users, setUsers] = useState(null);
+  const [majors, setMajors] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchUsers = async () => {
+  const fetchMajors = async () => {
     try {
       setError(null);
-      setUsers(null);
+      setMajors(null);
       setLoading(true);
       const response = await axios.get(
         "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/education.json"
       );
-      setUsers(response.data);
+      setMajors(response.data);
     } catch (e) {
       setError(e);
     }
@@ -196,7 +196,7 @@ const Major = () => {
   };
 
   useEffect(() => {
-    fetchUsers();
+    fetchMajors();
   }, []);
 
   return (
@@ -223,9 +223,9 @@ const Major = () => {
               </div>
               <div className="card-side card-side-back">
                 <MajorSection>
-                  {users &&
-                    users.FirstGrade.major.map((user) => (
-                      <li key={user}>{user}</li>
+                  {majors &&
+                    majors.FirstGrade.major.map((major) => (
+                      <li key={major}>{major}</li>
                     ))}
                 </MajorSection>
               </div>
