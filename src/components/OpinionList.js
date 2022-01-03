@@ -6,6 +6,7 @@ const OpinionWrapper = styled.div`
   align-items: center;
   width: 80%;
   height: 80vh;
+  column-gap: 10vh;
 `;
 
 const Teacheropinion = styled.div`
