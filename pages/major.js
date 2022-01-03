@@ -97,7 +97,7 @@ const CardHead = styled.div`
 `;
 
 const CardHeader = styled.div`
-  display: flex;
+  display: grid;
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
@@ -114,7 +114,6 @@ const CardText = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 21px;
-  margin: 1.1vh 0 0 10px;
 `;
 
 const CardInfo = styled.div`
@@ -124,7 +123,7 @@ const CardInfo = styled.div`
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
-  margin: 0 0 0 40px;
+  margin: 50px 0 0 40px;
 `;
 
 const MajorSection = styled.div`
