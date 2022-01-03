@@ -63,7 +63,6 @@ const Info = styled.div`
   background: #ffffff;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  grid-template-rows: 100px 80px 1px 300px 50px;
   grid-template-columns: 85%;
 `;
 

@@ -8,8 +8,8 @@ const MouWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  margin-top: 15vh;
-  margin-bottom: 10vh;
+  padding-top: 15vh;
+  padding-bottom: 10vh;
   img {
     max-width: 6%;
     width: inherit;
@@ -44,7 +44,7 @@ const Text2 = styled.div`
 `;
 
 const ListWrapper = styled.div`
-  width: 80%;
+  width: 130vh;
   height: 90%;
   display: flex;
   justify-content: center;
