@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MouList from "../src/components/MouList";
 import OpinionList from "../src/components/OpinionList";
+import MP from "../public/image/main.png";
 
 const Main = styled.div`
   display: flex;
@@ -8,7 +9,11 @@ const Main = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: #c4c4c4;
+  background-image: url("/image/main.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 5vh;
+  text-align: center;
 `;
 
 const Mou = styled.div`
@@ -32,7 +37,10 @@ const Opinion = styled.div`
 const Home = () => {
   return (
     <>
-      <Main>styled components 적용완료</Main>
+      <Main>
+        광주소프트웨어 <br />
+        마이스터고등학교의 모든 것
+      </Main>
       <Mou>
         <MouList />
       </Mou>

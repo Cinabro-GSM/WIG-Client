@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
@@ -8,9 +8,11 @@ const Main = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
   .card {
     width: 40vh;
     height: 70%;
+    margin-left: 3vh;
     position: relative;
     transform: rotateY(0deg);
     transition: 1s;
@@ -85,29 +87,6 @@ const CardWrapper = styled.div`
   width: 100%;
   height: 80%;
   row-gap: 0;
-`;
-
-const Card = styled.div`
-  position: relative;
-  width: 40vh;
-  height: 70%;
-  background: #c4c4c4;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-  margin-bottom: 10vh;
-  margin-right: -22vh;
-`;
-
-const Card3 = styled.div`
-  position: relative;
-  width: 40vh;
-  height: 70%;
-  background: #c4c4c4;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-  margin-bottom: 10vh;
-  margin-left: -22vh;
-  z-index: 0;
 `;
 
 const CardHead = styled.div`
@@ -209,9 +188,9 @@ const Major = () => {
               <InfoDesc>저희 학교에서 운영하는 학과입니다.</InfoDesc>
             </Info>
           </InfoWrapper>
+          {/* <Arrow src="/image/arrow.png" onClick={prevSlide} />
+          <Arrow2 src="/image/arrow.png" onClick={nextSlide} /> */}
           <CardWrapper>
-            <Card />
-            <Arrow src="/image/arrow.png" />
             <div className="card">
               <div className="card-side card-side-front">
                 <CardHead />
@@ -219,7 +198,7 @@ const Major = () => {
                   공통 학과
                   <CardText>1학년</CardText>
                 </CardHeader>
-                <CardInfo>C,Java 배움</CardInfo>
+                <CardInfo>C, Java를 배운다</CardInfo>
               </div>
               <div className="card-side card-side-back">
                 <MajorSection>
@@ -230,8 +209,42 @@ const Major = () => {
                 </MajorSection>
               </div>
             </div>
-            <Arrow2 src="/image/arrow.png" />
-            <Card3 />
+            <div className="card">
+              <div className="card-side card-side-front">
+                <CardHead />
+                <CardHeader>
+                  소프트웨어 개발 학과
+                  <CardText>2학년 ~ 3학년</CardText>
+                </CardHeader>
+                <CardInfo>게임개발 배움</CardInfo>
+              </div>
+              <div className="card-side card-side-back">
+                <MajorSection>
+                  {majors &&
+                    majors.SoftwareDevelop.major.map((major) => (
+                      <li key={major}>{major}</li>
+                    ))}
+                </MajorSection>
+              </div>
+            </div>
+            <div className="card">
+              <div className="card-side card-side-front">
+                <CardHead />
+                <CardHeader>
+                  스마트 IoT 학과
+                  <CardText>2학년 ~ 3학년</CardText>
+                </CardHeader>
+                <CardInfo>납땜</CardInfo>
+              </div>
+              <div className="card-side card-side-back">
+                <MajorSection>
+                  {majors &&
+                    majors.EmbededDevelop.major.map((major) => (
+                      <li key={major}>{major}</li>
+                    ))}
+                </MajorSection>
+              </div>
+            </div>
           </CardWrapper>
         </Main>
       )}
