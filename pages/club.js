@@ -161,27 +161,34 @@ const ClubName = styled.div`
 
 const ClubDesc = styled.div`
   margin: 1vh 4vh 0 3vh;
-  background-color: black;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
 `;
 
 const Club = () => {
-  const [clubs, setClub] = useState(null);
+  const [frees, setFree] = useState(null);
+  const [majors, setMajor] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const fetchClubs = async () => {
     try {
       setError(null);
-      setClub(null);
+      setFree(null);
+      setMajor(null);
       setLoading(true);
-      const response = await axios.get(
-        "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/MajorClub.json"
-      );
-      console.log(response.data);
-      setClub(response.data);
+      const [res1, res2] = await axios.all([
+        axios.get(
+          "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/MajorClub.json"
+        ),
+        axios.get(
+          "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/AutonomousClub.json"
+        ),
+      ]);
+      setMajor(res1.data);
+      setFree(res2.data);
+      console.log(res2.data);
     } catch (e) {
       setError(e);
     }
@@ -192,11 +199,20 @@ const Club = () => {
     fetchClubs();
   }, []);
 
-  const ClubList = clubs?.map((item) => (
+  const MajorList = majors?.map((item) => (
     <Clubs>
       <ClubIntro>
         <ClubName>{item.name}</ClubName>
         <ClubName>{item.major}</ClubName>
+      </ClubIntro>
+      <ClubDesc>{item.description}</ClubDesc>
+    </Clubs>
+  ));
+
+  const FreeList = frees?.map((item) => (
+    <Clubs>
+      <ClubIntro>
+        <ClubName>{item.name}</ClubName>
       </ClubIntro>
       <ClubDesc>{item.description}</ClubDesc>
     </Clubs>
@@ -213,11 +229,12 @@ const Club = () => {
               <InfoCounts>
                 전공동아리
                 <br />
-                {clubs && clubs.length}개
+                {majors && majors.length}개
               </InfoCounts>
               <InfoCounts>
                 자율동아리
                 <br />
+                {frees && frees.length}개
               </InfoCounts>
             </InfoCount>
             <SearchWrapper>
@@ -231,14 +248,14 @@ const Club = () => {
               전공동아리
               <Line />
             </ClubHead>
-            <ClubsVowel>{ClubList}</ClubsVowel>
+            <ClubsVowel>{MajorList}</ClubsVowel>
           </MajorClubs>
           <FreeClubs>
             <ClubHead>
               자율동아리
               <Line />
             </ClubHead>
-            <ClubsVowel></ClubsVowel>
+            <ClubsVowel>{FreeList}</ClubsVowel>
           </FreeClubs>
         </ClubWrapper>
       </Main>

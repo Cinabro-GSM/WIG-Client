@@ -9,6 +9,41 @@ const Main = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
+  .card {
+    position: relative;
+    width: 270px;
+    height: 300px;
+    border-radius: 43px;
+    transform: rotateY(0deg);
+    transition: 1s;
+    transform-style: preserve-3d;
+    z-index: 2;
+  }
+  .card-side {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 270px;
+    height: 300px;
+    background: #ffffff;
+    border-radius: 43px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+    backface-visibility: hidden;
+  }
+  .card-side-front {
+    z-index: 2;
+  }
+  .card-side-back {
+    background: #545454;
+    transform: rotateY(180deg);
+    grid-template-rows: 180px 40px;
+    z-index: 2;
+  }
+
+  .card:hover {
+    transform: rotateY(180deg);
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -123,6 +158,20 @@ const Projects = styled.div`
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
   border-radius: 43px;
   min-height: 300px;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    border-radius: 30px;
+    background-color: #acacac;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    z-index: 3;
+  }
 `;
 
 const ProjectHead = styled.div`
@@ -165,41 +214,6 @@ const Project = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // const fetchService = async () => {
-  //   try {
-  //     setError(null);
-  //     setService(null);
-  //     setLoading(true);
-  //     const response = await axios.get(
-  //       "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/service.json"
-  //     );
-  //     setService(response.data);
-  //   } catch (e) {
-  //     setError(e);
-  //   }
-  //   setLoading(false);
-  // };
-
-  // const fetchProjects = async () => {
-  //   try {
-  //     setError(null);
-  //     setProject(null);
-  //     setLoading(true);
-  //     const response = await axios.get(
-  //       "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/project.json"
-  //     );
-  //     setProject(response.data);
-  //   } catch (e) {
-  //     setError(e);
-  //   }
-  //   setLoading(false);
-  // };
-
-  // useEffect(() => {
-  //   fetchService();
-  //   fetchProjects();
-  // }, []);
-
   const testtest = async () => {
     try {
       setError(null);
@@ -213,10 +227,10 @@ const Project = () => {
           "https://gsm-festival.s3.ap-northeast-2.amazonaws.com/project.json"
         ),
       ]);
-      // setService(res1.data), setProject(res2.data);
       setService(res1.data);
       setProject(res2.data);
       setTotal(res1.data.concat(res2.data));
+      console.log(res2.data);
     } catch (e) {
       setError(e);
     }
@@ -226,19 +240,26 @@ const Project = () => {
     testtest();
   }, []);
 
-  // const Total = [...(services || []), ...(projects || [])];
-  // console.log(Total);
-
   const TotalLists = totals?.map((item) => (
-    <Projects>
-      <ProjectHead>
-        <img src={item.logo} />
-        {item.name}
-      </ProjectHead>
-      <Line />
-      <ProjectMajor>{item.major}</ProjectMajor>
-      <ProjectDesc>{item.description}</ProjectDesc>
-    </Projects>
+    <div className="card">
+      <Projects className="card-side card-side-front">
+        <ProjectHead>
+          <img src={item.logo} />
+          {item.name}
+        </ProjectHead>
+        <Line />
+        <ProjectMajor>{item.major}</ProjectMajor>
+        <ProjectDesc>{item.description}</ProjectDesc>
+      </Projects>
+      <Projects className="card-side card-side-back">
+        <a target="_blank" href={item.github}>
+          Github
+        </a>
+        <a target="_blank" href={item.link}>
+          바로가기
+        </a>
+      </Projects>
+    </div>
   ));
 
   const web = totals?.filter((item) => item.major.includes("Web"));
