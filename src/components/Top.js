@@ -6,6 +6,7 @@ const TopBg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #454545;
   width: 100%;
   height: 3.5vh;
   background-color: #ffffff;
@@ -30,7 +31,6 @@ const Menu = styled.div`
   width: 70px;
   height: 20x;
   text-align: center;
-  background-color: #454545;
   font-size: 14px;
   cursor: pointer;
 `;
