@@ -13,6 +13,7 @@ const Main = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 5vh;
+  font-family: Gungsuh, sans-serif;
   text-align: center;
 `;
 
