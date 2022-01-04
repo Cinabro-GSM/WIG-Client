@@ -163,9 +163,9 @@ const Projects = styled.div`
     align-items: center;
     width: 150px;
     height: 50px;
+    margin: 0 auto;
     border-radius: 30px;
     background-color: #acacac;
-    text-align: center;
     text-decoration: none;
     color: white;
     cursor: pointer;
@@ -275,7 +275,7 @@ const Project = () => {
           <Info>
             <InfoHead>Project</InfoHead>
             <Line />
-            <InfoDesc>이제까지 저희 학교에서 나온 프로젝트입니다.</InfoDesc>
+            <InfoDesc>지금까지 저희 학교에서 나온 프로젝트입니다.</InfoDesc>
             <InfoCounts>
               총 프로젝트
               <br />
