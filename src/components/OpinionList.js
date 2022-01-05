@@ -137,7 +137,7 @@ export const OpinionList = () => {
                 <Opinions>다양한 전공동아리를 활용하는 모습이 좋아요</Opinions>
               </Lists>
               <Lists className="two">
-                <Opinions>자기관를 잘한다? 당신은 취업자.</Opinions>
+                <Opinions>자기관리를 잘한다? 당신은 취업자.</Opinions>
                 <Dot>
                   <Profile src="/image/Profile.png" />
                 </Dot>
