@@ -111,7 +111,6 @@ export const OpinionList = () => {
                 <Opinions>실력과 인성을 갖춘 전문인의 요람</Opinions>
               </Lists>
               <Lists className="two">
-                <Opinions />
                 <Dot>
                   <Profile src="/image/Profile.png" />
                 </Dot>
@@ -122,7 +121,6 @@ export const OpinionList = () => {
                   <Profile src="/image/Profile.png" />
                 </Dot>
                 <Opinions>21세기를 주도 할 차세대 리더</Opinions>
-                <Opinions />
               </Lists>
             </ListWrapper>
           </OpinionListWrapper>
@@ -139,7 +137,6 @@ export const OpinionList = () => {
                 <Opinions>다양한 전공동아리를 활용하는 모습이 좋아요</Opinions>
               </Lists>
               <Lists className="two">
-                <Opinions />
                 <Dot>
                   <Profile src="/image/Profile.png" />
                 </Dot>
@@ -150,7 +147,6 @@ export const OpinionList = () => {
                   <Profile src="/image/Profile.png" />
                 </Dot>
                 <Opinions>얻고 싶은 만큼 얻어갈 수 있는 학교</Opinions>
-                <Opinions />
               </Lists>
             </ListWrapper>
           </OpinionListWrapper>
