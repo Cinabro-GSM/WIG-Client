@@ -111,10 +111,10 @@ export const OpinionList = () => {
                 <Opinions>실력과 인성을 갖춘 전문인의 요람</Opinions>
               </Lists>
               <Lists className="two">
+                <Opinions>미래 사회의 주역이 될 인재양성</Opinions>
                 <Dot>
                   <Profile src="/image/Profile.png" />
                 </Dot>
-                <Opinions>미래 사회의 주역이 될 인재양성</Opinions>
               </Lists>
               <Lists>
                 <Dot>
@@ -137,10 +137,10 @@ export const OpinionList = () => {
                 <Opinions>다양한 전공동아리를 활용하는 모습이 좋아요</Opinions>
               </Lists>
               <Lists className="two">
+                <Opinions>자기관를 잘한다? 당신은 취업자.</Opinions>
                 <Dot>
                   <Profile src="/image/Profile.png" />
                 </Dot>
-                <Opinions>자기관를 잘한다? 당신은 취업자.</Opinions>
               </Lists>
               <Lists>
                 <Dot>
