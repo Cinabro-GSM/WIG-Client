@@ -141,11 +141,15 @@ export const OpinionList = () => {
                 <Dot>
                   <Profile src="/image/Profile.png" />
                 </Dot>
+                <Opinions>
+                  자습을 잘하면 취업은 90%확률로 할 수 있습니다.
+                </Opinions>
               </Lists>
               <Lists>
                 <Dot>
                   <Profile src="/image/Profile.png" />
                 </Dot>
+                <Opinions>얻고 싶은 만큼 얻어갈 수 있는 학교</Opinions>
                 <Opinions />
               </Lists>
             </ListWrapper>

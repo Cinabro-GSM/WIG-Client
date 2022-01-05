@@ -71,7 +71,6 @@ export default function Top() {
           >
             프로젝트
           </Menu>
-          ßÍÍ
         </TopWrapper>
       </TopBg>
     </>
